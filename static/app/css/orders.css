@@ -1,0 +1,37 @@
+.orders_section{
+    flex-direction: column;
+    border-top: solid black 1px;
+}
+.order{
+    display: flex;
+    flex-direction: column;
+    min-height: 130px;
+    height: auto;
+    width: 100%;
+    max-width: 700px;
+    border: solid black 1px;
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+}
+.order .button{
+    flex:0 0 40px;
+}
+.order p{
+    display: flex;
+    flex: 1 0 30px;
+    align-items: center;
+    padding-left: 5px;
+}
+.order .new_badge{
+    display: flex;
+    flex: 0 0 30px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 130, 0, 0.7);
+    color: white;
+}

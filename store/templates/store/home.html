@@ -1,0 +1,35 @@
+{% extends "app/base.html" %}
+{% block title %}
+<title>Raia Kitchenware Store </title>
+{% endblock %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'store/css/home.css' %}">
+{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block body %}
+<div class="section_header">
+    <h1>SHOP</h1>
+</div>
+<div class="section_body store_section">
+    {% for product in products %}
+    <div class="product">
+        <div class="top_details">
+            <img class="product_image" src="{{product.imageURL}}" alt="{{ product.name }}">
+            <div class="action_buttons">
+                <p data-product="{{product.id}}" data-action="add"  class="button update-cart">ADD TO CART</p>
+                <a href="{% url 'product_details' product.id %}" class="button">READ MORE</a>
+            </div>
+        </div>
+        <div class="bottom_details">
+            <p>{{ product.cartegory.name }}</p>
+            <p class="product_name">{{ product.name }}</p>
+            <p>{{ product.price }} ksh</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "app/base.html" %}
+{% block title %}
+<title>RaiaKitchenware</title>
+{% endblock %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'store/css/cart.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/order.css' %}">
+{% endblock %}
+{% block nav %}
+    {%if user.is_authenticated %}
+    <a class="button" href="{%url 'logout'%}">Log Out</a>
+    {%else%}
+    <!-- <a class="button" href="{%url 'login'%}">Log In</a> -->
+    {%endif%}
+{% endblock %}
+{% block body %}
+<div class="section_header">
+    <h1>ORDER DETAILS</h1>
+</div>
+<div class="section_body order_section">
+    {%if user.is_authenticated %}
+    <div class="order">
+        <div class="order_details">
+            <div class="details">
+                <p>CUSTOMER DETAILS</p>
+                <p>ordered by : {{ order.customer.first_name }} {{ order.customer.last_name }}</p>
+                <p>phone number : {{ order.customer.phone_number }}</p>
+                <p>email : {{ order.customer.email }}</p>
+                <p>date : {{ order.date_ordered }}</p>
+            </div>
+            <div class="details">
+                <p>SHIPPING ADDRESS</p>
+                {% if order.shipping_address.city_or_town %}
+                <p>City:{{ order.shipping_address.city_or_town }}</p>
+                {% endif %}
+                {% if order.shipping_address.estate %}
+                <p>Estate:{{ order.shipping_address.estate }}</p>
+                {% endif %}
+                {% if order.shipping_address.street %}
+                <p>Street:{{ order.shipping_address.street }}</p>
+                {% endif %}
+                {% if order.shipping_address.building %}
+                <p>Building:{{ order.shipping_address.building }}</p>
+                {% endif %}
+                {% if order.shipping_address.additional_information %}
+                <p>{{ order.shipping_address.additional_information }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="cart">
+            <div class="cart_header">
+                <p class="image_header">Image</p>
+                <p class="product_details_header">
+                    <span class="details_column_one_header">Product</span>
+                    <span class="details_column_two_header">Number Of Items</span>
+                </p>
+            </div>
+            {% for item in items %}
+            <div class="cart_item">
+                <img src="{{item.product.imageURL}}" class="product_image" alt="">
+                <div class="details">
+                    <div class="details_column details_column_one">
+                        <p class="product_name">{{item.product.name}}</p>
+                        <p>
+                            <span>Price:{{item.product.price|floatformat:2}} ksh</span>
+                        </p>
+                    </div>
+                    <div class="details_column details_column_two">
+                        <div class="number_of_items">
+                            <p class="number">{{item.quantity}}</p>
+                        </div>
+                        <p class="item_total">{{item.get_total|floatformat:2}} ksh</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="cart_totals">
+                <p>TOTAL ITEMS: {{order.get_cart_items}}</p>
+                <p>TOTAL PRICE: {{order.get_cart_total|floatformat:2}} KSH</p>
+            </div>
+            <a href="{% url 'mark_as_complete' order.id %}" class="button">MARK AS COMPLETE</a>
+        </div>
+    </div>
+    {%else%}
+    <div class="order">
+        <h3>you are not authorized to view this paage please login</h3>
+        <!-- <a class="button" href="{%url 'login'%}">Log In</a> -->
+    </div>
+    
+    {%endif%}
+</div>
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}

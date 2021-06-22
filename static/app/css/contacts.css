@@ -1,0 +1,25 @@
+.section_body{
+    flex-wrap: wrap;
+}
+.contact_cartegory{
+    display: flex;
+    flex-direction: column;
+    flex:1 0 300px;
+    height: auto;
+    min-height: 300px;
+    align-items: center;
+    border: solid grey 2px;
+    margin:10px;
+}
+.contact_cartegory_image{
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+}
+.contact{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-items: center;
+    width: 100%;
+}

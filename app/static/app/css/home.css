@@ -1,0 +1,43 @@
+.home_header{
+    flex-direction: column;
+    flex: 0 0 75vh;
+    position: relative;
+    background-image: none;
+    background-image: linear-gradient(to right,rgba(160,0,0, 0.5),rgba(0, 130, 0, 0.5)), url(../images/jpgs/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.home_header h1{
+    font-size: 40px;
+    text-align: center;
+}
+@media(max-width:500px){
+    .home_header h1{
+        font-size: 30px;
+    }
+}
+.home_header h3{
+    text-align: center;
+    color: rgb(200,0,0);
+    font-size: 30px;
+}
+.shop_link{
+    width: 150px;
+    position: absolute;
+    bottom: 10px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+}
+.shop_link img{
+    height: 30px;
+    width: 40px;
+}
+.home_section{
+    flex-direction: column;
+}
+.home_section p{
+    margin: 10px;
+    font-size: 20px;
+}

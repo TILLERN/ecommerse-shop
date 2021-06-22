@@ -1,0 +1,36 @@
+{% extends "app/base.html" %}
+{% block title %}
+<title>Checkout</title>
+{% endblock %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'store/css/checkout.css' %}">
+{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block body %}
+<div class="section_header">
+    <h1>CHECkOUT</h1>
+</div>
+<div class="section_body checkout_section">
+    <h3>NOTE THAT YOU WILL BE ASKED TO PAY FULL DELIVERY FEE BEFORE YOUR ORDER IS PROCESSED</h3>
+    <h3>PAYMENTS FOR THE GOODS WILL BE DONE ON DELIVERY</h3>
+    <h3>ALL PAYMENTS ARE TO BE DONE THROUGH THE TILL NUMBER 5380637</h3>
+    <div class="order_summary">
+        <p>ORDER SUMARRY</p>
+        <p class="cart_total">CART TOTAL: {{order.get_cart_total|floatformat:2}} KSH</p>
+        <p class="delivery_charges">DELIVERY CHARGES: {{delivery_fee|floatformat:2}} KSH</p>
+        <p class="total">TOTAL: {{grand_total|floatformat:2}} KSH</p>
+    </div>
+    <form action="{% url 'checkout' %}" class="" method="POST">
+        {% csrf_token %}
+        <ul>
+            {{ form.as_ul }}
+        </ul>
+        <input type="submit" value="SUBMIT" class="submit_button button">
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'checkout/js/checkout.js' %}"></script>
+{% endblock %}

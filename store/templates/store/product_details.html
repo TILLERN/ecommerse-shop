@@ -1,0 +1,31 @@
+{% extends "app/base.html" %}
+{% block title %}
+<title>item details</title>
+{% endblock %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'store/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'store/css/product_details.css' %}">
+{% endblock %}
+{% block body %}
+<div class="section_header">
+    <h1>PRODUCT PAGE</h1>
+</div>
+<div class="section_body product_section">
+    <div class="product_details">
+        <div class="product_images">
+            <img src="{{product.imageURL}}" alt="{{ product.name }}" class="main_image">
+        </div>
+        <div class="text_details">
+            <p class="name">{{ product.name }}</p>
+            <p class="description">{{ product.description }}</p>
+            <p>{{ product.price }} ksh</p>
+            <div class="action_buttons">
+                <button data-product="{{product.id}}" data-action="add" class="button update-cart">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}

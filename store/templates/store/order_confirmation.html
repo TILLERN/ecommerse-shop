@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raia</title>
+    <link rel="stylesheet" href="{% static 'store/css/order_confirmation.css' %}">
+</head>
+<body>
+    <script>
+        cart = {}
+        document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    </script>
+    <h1>THANK YOU FOR SHOPPING WITH US WE WILL REACH OUT TO YOU SOON</h1>
+    <a href="{% url 'store_home' %}" class="button">CONTINUE SHOPPING</a>
+    <h3>Help us server you better by notifying us of your order through the whatsapp link below</h3>
+    <a href=" https://wa.me/254721768247?text=New%20order%20notification!%20Thank%20You" class="button cart_button">
+        <img src="{% static 'store/images/svgs/whatsappblack.svg' %}"class="main_image" alt="">
+        <img src="{% static 'store/images/svgs/whatsappwhite.svg' %}" class="hover_image" alt="">
+    </a>
+</body>
+</html>

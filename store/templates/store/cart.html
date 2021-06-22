@@ -1,0 +1,63 @@
+{% extends "app/base.html" %}
+
+{% block title %}
+<title>cart</title>
+{% endblock %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'store/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'store/css/cart.css' %}">
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+<div class="section_header">
+    <h1>CART</h1>
+</div>
+<div class="section_body cart_section">
+    <div class="cart">
+        <div class="cart_totals">
+            <div class="action_buttons">
+                <a href="{% url 'store_home' %}" class="button">CONTINUE SHOPPING</a>
+                <a href="{% url 'checkout' %}" class="button">CHECKOUT</a>
+            </div>
+            <p>TOTAL ITEMS: {{order.get_cart_items}}</p>
+            <p>TOTAL PRICE: {{order.get_cart_total|floatformat:2}} KSH</p>
+        </div>
+        <div class="cart_header">
+            <p class="image_header">Image</p>
+            <p class="product_details_header">
+                <span class="details_column_one_header">Product</span>
+                <span class="details_column_two_header">Number Of Items</span>
+            </p>
+        </div>
+        {% for item in items %}
+        <div class="cart_item">
+            <img src="{{item.product.imageURL}}" class="product_image" alt="">
+            <div class="details">
+                <div class="details_column details_column_one">
+                    <p class="product_name">{{item.product.name}}</p>
+                    <p>
+                        <span>Price:{{item.product.price|floatformat:2}} ksh</span>
+                    </p>
+                </div>
+                <div class="details_column details_column_two">
+                    <div class="number_of_items">
+                        <img data-product="{{item.product.id}}" data-action="add" class="increase update-cart" src="{% static 'store/images/svgs/increase.svg' %}" alt="">
+                        <p class="number">{{item.quantity}}</p>
+                        <img data-product="{{item.product.id}}" data-action="remove" class="decrease update-cart" src="{% static 'store/images/svgs/decrease.svg' %}" alt="">
+                    </div>
+                    <p class="item_total">{{item.get_total|floatformat:2}} ksh</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}

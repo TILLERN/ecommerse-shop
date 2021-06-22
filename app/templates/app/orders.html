@@ -1,0 +1,40 @@
+{% extends "app/base.html" %}
+{% block title %}
+<title>Raia Orders</title>
+{% endblock %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/orders.css' %}">
+{% endblock %}
+{% block nav %}
+    {%if user.is_authenticated %}
+    <a class="button" href="{%url 'logout'%}">Log Out</a>
+    {%else%}
+    {%endif%}
+{% endblock %}
+{% block body %}
+<div class="section_header">
+    <h1>ORDERS</h1>
+</div>
+{%if user.is_authenticated %}
+{% for order in orders %}
+<div class="order">
+    {% if order.is_new %}
+    <p class="new_badge">NEW</p>
+    {% endif %}
+    <p>ORDERED BY : {{ order.customer.first_name }} {{ order.customer.last_name }}</p>
+    <p>ORDERED ON : {{ order.date_ordered }}</p>
+    <a href="{% url 'order_details' order.id %}" class="button">ORDER DETAILS</a>
+</div>
+{% endfor %}
+{%else%}
+<div class="order">
+    <h3>you are not authorized to view this paage please login</h3>
+</div>
+{%endif%}
+    
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}
