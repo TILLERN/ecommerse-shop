@@ -17,6 +17,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'raiakitchenware.co.ke',
     'www.raiakitchenware.co.ke',
+    'localhost',
+    '127.0.0.1:8000',
     ]
 
 
