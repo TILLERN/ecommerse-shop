@@ -14,12 +14,7 @@ SECRET_KEY = '#q+b93y0hkq1=4=!ugfvg=-h44qjid)z1(kp3f#u4%74jsqr_p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'raiakitchenware.co.ke',
-    'www.raiakitchenware.co.ke',
-    'localhost',
-    '127.0.0.1:8000',
-    ]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -116,8 +111,12 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT=os.path.join(BASE_DIR,'static')
-STATIC_ROOT = '/home/raiakitc/public_html/static'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
 MEDIA_URL = '/media/'
