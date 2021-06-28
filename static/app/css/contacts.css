@@ -1,25 +1,74 @@
-.section_body{
-    flex-wrap: wrap;
-}
-.contact_cartegory{
-    display: flex;
-    flex-direction: column;
-    flex:1 0 300px;
-    height: auto;
-    min-height: 300px;
-    align-items: center;
-    border: solid grey 2px;
-    margin:10px;
-}
-.contact_cartegory_image{
-    height: 100px;
-    width: 100px;
-    margin: 5px;
-}
-.contact{
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-    align-items: center;
-    width: 100%;
-}
+    .contact_header {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        /* background-image: url(../images/svgs/logo2.png); */
+    }
+    
+    .contact_header div {
+        background-color: gold;
+        width: 84%;
+        padding: 10px 0 10px 0;
+    }
+    
+    .contact_header h1 {
+        display: flex;
+        justify-content: center;
+        color: green;
+        font-size: xx-large;
+        font-weight: bolder;
+    }
+    
+    .contacts_section {
+        background-color: black;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+    
+    .contacts_section div {
+        width: 85%;
+    }
+    
+    #contact_one {
+        margin-left: 0%;
+        margin-right: 2%;
+    }
+    
+    #contact_one {
+        margin-left: 2%;
+        margin-right: 0%;
+    }
+    
+    .contacts_section div .contact_cartegory {
+        float: left;
+        height: auto;
+        width: 46%;
+        min-height: 300px;
+        align-items: center;
+        margin: 10px;
+        border-radius: 10px 10px;
+        background-color: gray;
+        padding: 10px;
+        box-shadow: 2px 2px gold;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .contact_cartegory_image {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+    }
+    
+    .contact {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        align-items: center;
+        width: 100%;
+    }

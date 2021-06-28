@@ -1,13 +1,8 @@
-{% extends "app/base.html" %}
-{% block title %}
+{% extends "app/base.html" %} {% block title %}
 <title>item details</title>
-{% endblock %}
-{% load static %}
-{% block css %}
+{% endblock %} {% load static %} {% block css %}
 <link rel="stylesheet" href="{% static 'store/css/home.css' %}">
-<link rel="stylesheet" href="{% static 'store/css/product_details.css' %}">
-{% endblock %}
-{% block body %}
+<link rel="stylesheet" href="{% static 'store/css/product_details.css' %}"> {% endblock %} {% block body %}
 <div class="section_header">
     <h1>PRODUCT PAGE</h1>
 </div>
@@ -26,6 +21,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-{% block js %}
-{% endblock %}
+{% endblock %} {% block js %} {% endblock %}

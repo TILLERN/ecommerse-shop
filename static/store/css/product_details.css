@@ -1,14 +1,20 @@
-
-.product_section{
+.product_section {
     justify-content: center;
 }
-.product_details{
+
+.product_details {
     display: flex;
-    flex: 0 1 800px;
+    flex: 1 0 250px;
     min-height: 400px;
-    border: solid 1px black;
+    background-color: black;
+    color: yellow;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
 }
-.product_details .product_images{
+
+.product_details .product_images {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -16,60 +22,71 @@
     justify-content: center;
     padding: 10px;
 }
-.product_details .product_images .main_image{
+
+.product_details .product_images .main_image {
     width: 80%;
+    border-radius: 25px 25px;
 }
-.product_details .text_details{
+
+.product_details .text_details {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
-.product_details .text_details p{
+
+.product_details .text_details p {
     display: flex;
     min-height: 50px;
     padding: 15px;
     align-items: center;
 }
-.product_details .text_details .name{
+
+.product_details .text_details .name {
     text-transform: uppercase;
 }
-.product_details .text_details .description{
+
+.product_details .text_details .description {
     display: flex;
     padding: 15px;
     flex: 1 0 100px;
     align-items: flex-start;
 }
-.actions{
+
+.actions {
     display: flex;
     flex-direction: column;
     flex: 1 0 100px;
 }
-.product_details .text_details .options{
+
+.product_details .text_details .options {
     display: flex;
     min-height: 60px;
     padding: 10px;
     align-items: center;
 }
-.product_details .text_details .options select{
+
+.product_details .text_details .options select {
     height: 50px;
     flex: 1 1 120px;
     margin: 5px;
 }
-.product_details .text_details .action_buttons{
+
+.product_details .text_details .action_buttons {
     display: flex;
     min-height: 70px;
     align-items: center;
     justify-content: center;
     padding: 10px;
 }
-@media(max-width:560px){
-    .product_details{
+
+@media(max-width:560px) {
+    .product_details {
         flex-direction: column;
     }
-    .product_details .product_images{
+    .product_details .product_images {
         border-right: none;
     }
-    .product_details .product_images .main_image{
+    .product_details .product_images .main_image {
         width: 90%;
     }
 }

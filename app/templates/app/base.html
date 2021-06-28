@@ -1,71 +1,68 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% block title %}
     <title>base</title>
     {% endblock %}
-    <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
-    {% block css %}
-    {% endblock %}
+    <link rel="stylesheet" href="{% static 'app/css/base.css' %}"> {% block css %} {% endblock %}
     <script type="text/javascript">
+        function getToken(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken')
 
-		function getToken(name) {
-		    var cookieValue = null;
-		    if (document.cookie && document.cookie !== '') {
-		        var cookies = document.cookie.split(';');
-		        for (var i = 0; i < cookies.length; i++) {
-		            var cookie = cookies[i].trim();
-		            // Does this cookie string begin with the name we want?
-		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-		                break;
-		            }
-		        }
-		    }
-		    return cookieValue;
-		}
-		var csrftoken = getToken('csrftoken')
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
 
-		function getCookie(name) {
-		    // Split cookie string and get all individual name=value pairs in an array
-		    var cookieArr = document.cookie.split(";");
+            // Loop through the array elements
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
 
-		    // Loop through the array elements
-		    for(var i = 0; i < cookieArr.length; i++) {
-		        var cookiePair = cookieArr[i].split("=");
+                /* Removing whitespace at the beginning of the cookie name
+                and compare it with the given string */
+                if (name == cookiePair[0].trim()) {
+                    // Decode the cookie value and return
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
 
-		        /* Removing whitespace at the beginning of the cookie name
-		        and compare it with the given string */
-		        if(name == cookiePair[0].trim()) {
-		            // Decode the cookie value and return
-		            return decodeURIComponent(cookiePair[1]);
-		        }
-		    }
+            // Return null if not found
+            return null;
+        }
+        var cart = JSON.parse(getCookie('cart'));
 
-		    // Return null if not found
-		    return null;
-		}
-		var cart = JSON.parse(getCookie('cart'));
-
-		if (cart == undefined){
-			cart = {}
-			console.log('Cart Created!', cart)
-			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
-		}
-		console.log('Cart:', cart)
-	
-	</script>
+        if (cart == undefined) {
+            cart = {}
+            console.log('Cart Created!', cart)
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+        }
+        console.log('Cart:', cart)
+    </script>
 </head>
+
 <body>
     <header id="header">
         <div class="logoandnav">
             <a href="{% url 'app_home' %} " class="logo">
-                <img src="{% static 'app/images/svgs/raia2.svg' %}" alt="" class="logo">
+                <img src="{% static 'app/images/svgs/logo2.png' %}" alt="" class="logo">
             </a>
-            
+
             <div class="nav_button" id="toggle_nav">
                 <div class="nav_button" id="open_icon">
                     <div class="stripe"></div>
@@ -78,11 +75,9 @@
             </div>
         </div>
         <nav class="navigation">
-            <a href="{% url 'app_home' %}" class="button">about us</a>
-            <a href="{% url 'contacts' %}" class="button">contacts</a>
             <a href="{% url 'store_home' %}" class="button">shop</a>
-            {% block nav %}
-            {% endblock %}
+            <a href="{% url 'app_home' %}" class="button">about us</a>
+            <a href="{% url 'contacts' %}" class="button">contacts</a> {% block nav %} {% endblock %}
             <a href="{% url 'cart' %}" class="button cart_button">
                 <img src="{% static 'app/images/svgs/shoppingcart.svg' %}" class="main_image" alt="">
                 <img src="{% static 'app/images/svgs/shoppingcartwhite.svg' %}" class="hover_image" alt="">
@@ -91,13 +86,12 @@
         </nav>
     </header>
     <section>
-    {% block body %}
-    {% endblock %}
+        {% block body %} {% endblock %}
     </section>
     <script src="{% static 'app/js/jquery.js' %}"></script>
     <script src="{% static 'app/js/base.js' %}"></script>
     <script src="{% static 'app/js/cart.js' %}"></script>
-    {% block js %}
-    {% endblock %}
+    {% block js %} {% endblock %}
 </body>
+
 </html>

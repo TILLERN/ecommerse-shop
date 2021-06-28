@@ -1,27 +1,23 @@
-{% extends "app/base.html" %}
-{% block title %}
+{% extends "app/base.html" %} {% block title %}
 <title>Raia</title>
-{% endblock %}
-{% load static %}
-{% block css %}
-<link rel="stylesheet" href="{% static 'app/css/home.css' %}">
-{% endblock %}
-{% block nav %}
-{% endblock %}
-{% block body %}
+{% endblock %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'app/css/home.css' %}"> {% endblock %} {% block nav %} {% endblock %} {% block body %}
 <div class="section_header home_header">
-    <h1>RAIA KITCHENWARE</h1>
+    <h1>VIDZA COLLECTIONS</h1>
     <h3>shop now <br> &DownArrow;</h3>
     <a href="{% url 'store_home' %} " class="button shop_link">
         <img src="{% static 'app/images/svgs/shop.svg' %}" alt="">
     </a>
 </div>
+
+
+
 <div class="section_body home_section">
-    <h1>About Us </h1>
-    {% for about in abouts %}
+    <div id="home_section_head">
+        <h1>About Us </h1>
+    </div>
+    <hr id="line-seperator"> {% for about in abouts %}
     <p>{{about.article}}</p>
     {% endfor %}
 </div>
-{% endblock %}
-{% block js %}
-{% endblock %}
+{% endblock %} {% block js %} {% endblock %}

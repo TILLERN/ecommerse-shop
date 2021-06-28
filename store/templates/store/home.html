@@ -1,24 +1,22 @@
-{% extends "app/base.html" %} {% load static %}
-{% block title %}
-<title>Raia Kitchenware Store </title>
-{% endblock title %}
-
-
-<link rel="stylesheet" href="{% static 'store/css/home.css' %}">
-
-{% block nav %}
-{% endblock %}
-{% block body %}
-<div class="section_header">
-    <h1>SHOP</h1>
+{% extends "app/base.html" %} {% load static %} {% block title %}
+<title>Vidza Collections Store </title>
+{% endblock title %} {%block css%}
+<link rel="stylesheet" href="{% static 'store/css/home.css' %}">{%endblock css%} {% block nav %} {% endblock %} {% block body %}
+<div id="store_header">
+    <h1>VIDZA COLLECTIONS</h1>
+    <br>
+    <p><em>For Quality,Shop With Us...</em></p>
 </div>
-<div class="section_body store_section">
+
+<hr>
+<br>
+<div class="store_section">
     {% for product in products %}
     <div class="product">
         <div class="top_details">
             <img class="product_image" src="{{product.imageURL}}" alt="{{ product.name }}">
             <div class="action_buttons">
-                <p data-product="{{product.id}}" data-action="add"  class="button update-cart">ADD TO CART</p>
+                <p data-product="{{product.id}}" data-action="add" class="button update-cart">ADD TO CART</p>
                 <a href="{% url 'product_details' product.id %}" class="button">READ MORE</a>
             </div>
         </div>
@@ -30,6 +28,4 @@
     </div>
     {% endfor %}
 </div>
-{% endblock %}
-{% block js %}
-{% endblock %}
+{% endblock %} {% block js %} {% endblock %}

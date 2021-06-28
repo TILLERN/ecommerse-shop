@@ -1,69 +1,56 @@
-{% extends "app/base.html" %}
-{% block title %}
-<title>RaiaKitchenware</title>
-{% endblock %}
-{% load static %}
-{% block css %}
+{% extends "app/base.html" %} {% block title %}
+<title>Vidza Collection</title>
+{% endblock %} {% load static %} {% block css %}
 <link rel="stylesheet" href="{% static 'app/css/home.css' %}">
-<link rel="stylesheet" href="{% static 'app/css/contacts.css' %}">
-{% endblock %}
-{% block nav %}
-{% endblock %}
-{% block body %}
-<div class="section_header">
-    <h1>CONTACT US</h1>
+<link rel="stylesheet" href="{% static 'app/css/contacts.css' %}"> {% endblock %} {% block nav %} {% endblock %} {% block body %}
+<div class="contact_header">
+    <div>
+        <h1>CONTACT US</h1>
+    </div>
 </div>
+
+<hr id="line-seperator">
+
 <div class="section_body contacts_section">
-    <div class="contact_cartegory">
-        <img src="{% static 'app/images/svgs/locationoutlined.svg' %}" alt="" class="contact_cartegory_image">
-        <p>PHYSICAL ADDRESS:</p>
-        {% for physical_address in physical_addresses %}
-        <div class="contact">
-            <p> <b>{{ physical_address.name }}</b> </p>
-            {% if physical_address.city %}
-            <p>City:{{ physical_address.city }}</p>
-            {% endif %}
-            {% if physical_address.street %}
-            <p>Street:{{ physical_address.street }}</p>
-            {% endif %}
-            {% if physical_address.building %}
-            <p>Building:{{ physical_address.building }}</p>
-            {% endif %}
-            {% if physical_address.additional_information %}
-            <p>{{ physical_address.additional_information }}</p>
-            {% endif %}
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="contact_cartegory">
-        <img src="{% static 'app/images/svgs/contactsoutlined.svg' %}" alt="" class="contact_cartegory_image">
-        <p>CONTACTS:</p>
-        {% for phone_number in phone_numbers %}
-        <div class="contact">
-            <p>Phone: {{ phone_number.number }}</p>
-        </div> 
-        {% endfor %}
-
-        {% for email in emails %}
-        <div class="contact">
-            <p>Email: {{ email.email_address }}</p>
-        </div>
-        {% endfor %}
-
-        {% for social in socials %}
-        <div class="contact">
-            <p>{{social.platform}}: 
-                {% if social.link %}
-                <a href="{{contact.link}}">{{social.username}}</a>
-                {% else %}
-                {{social.username}}
+    <div>
+        <div class="contact_cartegory" id="contact_one">
+            <img src="{% static 'app/images/svgs/locationoutlined.svg' %}" alt="" class="contact_cartegory_image">
+            <p>PHYSICAL ADDRESS:</p>
+            {% for physical_address in physical_addresses %}
+            <div class="contact">
+                <p> <b>{{ physical_address.name }}</b> </p>
+                {% if physical_address.city %}
+                <p>City:{{ physical_address.city }}</p>
+                {% endif %} {% if physical_address.street %}
+                <p>Street:{{ physical_address.street }}</p>
+                {% endif %} {% if physical_address.building %}
+                <p>Building:{{ physical_address.building }}</p>
+                {% endif %} {% if physical_address.additional_information %}
+                <p>{{ physical_address.additional_information }}</p>
                 {% endif %}
-            </p>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+
+        <div class="contact_cartegory" id="contact_two">
+            <img src="{% static 'app/images/svgs/contactsoutlined.svg' %}" alt="" class="contact_cartegory_image">
+            <p>CONTACTS:</p>
+            {% for phone_number in phone_numbers %}
+            <div class="contact">
+                <p>Phone: {{ phone_number.number }}</p>
+            </div>
+            {% endfor %} {% for email in emails %}
+            <div class="contact">
+                <p>Email: {{ email.email_address }}</p>
+            </div>
+            {% endfor %} {% for social in socials %}
+            <div class="contact">
+                <p>{{social.platform}}: {% if social.link %}
+                    <a href="{{contact.link}}">{{social.username}}</a> {% else %} {{social.username}} {% endif %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
-{% endblock %}
-{% block js %}
-{% endblock %}
+{% endblock %} {% block js %} {% endblock %}
